@@ -1,5 +1,5 @@
-import { useLocation, Link } from "react-router-dom";
 import { Facebook, Twitter, Instagram } from 'lucide-react';
+import { useLocation, Link } from "react-router-dom";
 
 export default function Footer() {
     

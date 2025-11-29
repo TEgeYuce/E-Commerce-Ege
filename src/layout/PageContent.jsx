@@ -1,9 +1,9 @@
-import { Switch, Route } from "react-router-dom";
 import HomePage from "../pages/HomePage";
 import ShopPage from "../pages/ShopPage";
 import AboutPage from "../pages/AboutPage";
 import ContactPage from "../pages/ContactPage";
 import ProductDetail from "../pages/ProductDetail";
+import { Switch, Route } from "react-router-dom";
 
 export default function PageContent() {
     return (
