@@ -10,19 +10,19 @@ export default function PageContent() {
         <div className="page-content">
             <Switch>
                 <Route exact path="/">
-                    <HomePage />
+                    <HomePage/>
                 </Route>
                 <Route path="/shop">
-                    <ShopPage />
+                    <ShopPage/>
                 </Route>
                 <Route path="/about">
-                    <AboutPage />
+                    <AboutPage/>
                 </Route>
                 <Route path="/contact">
-                    <ContactPage />
+                    <ContactPage/>
                 </Route>
                 <Route path="/product">
-                    <ProductDetail />
+                    <ProductDetail/>
                 </Route>
             </Switch>
         </div>
