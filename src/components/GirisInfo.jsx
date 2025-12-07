@@ -1,5 +1,5 @@
-import girisresimMobil from "../assets/girisresimmobil.png"
-import girisresim from "../assets/girisresim.png"
+import girisresimMobil from "/girisresimmobil.png"
+import girisresim from "/girisresim.png"
 
 export default function GirisInfo() {
     return (

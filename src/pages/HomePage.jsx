@@ -1,6 +1,6 @@
 import GirisInfo from "../components/GirisInfo";
 import MarkaLogolar from "../components/MarkaLogolar";
-import ShopKartlar from "../components/ShopKartlar";
+import HomeShopKartlar from "../components/HomeShopKartlar";
 import ProductKartlar from "../components/ProductKartlar";
 import OnecikanUrunler from "../components/OnecikanUrunler";
 import Servisler from "../components/Servisler";
@@ -11,7 +11,7 @@ export default function HomePage() {
         <>
             <GirisInfo />
             <MarkaLogolar />
-            <ShopKartlar />
+            <HomeShopKartlar />
             <ProductKartlar />
             <OnecikanUrunler />
             <Servisler />

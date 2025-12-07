@@ -1,5 +1,5 @@
-import onecikan1 from "../assets/onecikan1.jpg";
-import onecikan2 from "../assets/onecikan2.jpg";
+import onecikan1 from "/onecikan1.jpg";
+import onecikan2 from "/onecikan2.jpg";
 
 export default function OnecikanUrunler() {
     return (

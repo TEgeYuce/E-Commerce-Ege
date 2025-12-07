@@ -1,6 +1,6 @@
-import shopkart1 from "../assets/shopkart1.png";
-import shopkart2 from "../assets/shopkart2.png";
-import shopkart3 from "../assets/shopkart3.png";
+import shopkart1 from "/shopkart1.png";
+import shopkart2 from "/shopkart2.png";
+import shopkart3 from "/shopkart3.png";
 
 export default function ShopKartlar() {
     return (

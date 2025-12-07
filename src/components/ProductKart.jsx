@@ -1,4 +1,4 @@
-import urunResim from "../assets/urunResim.jpg";
+import urunResim from "/urunResim.jpg";
 
 export default function ProductKart() {
     return (

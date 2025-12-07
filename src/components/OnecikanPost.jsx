@@ -1,6 +1,6 @@
 import {ChartArea, AlarmClock, Heart, ChevronRight, Eye, ShoppingCart, Star, Download, ChartBar} from "lucide-react";
-import OnecikanPost1 from "../assets/onecikanpost1.jpg";
-import OnecikanPostResim from "../assets/onecikanpostresim.jpg";
+import OnecikanPost1 from "/onecikanpost1.jpg";
+import OnecikanPostResim from "/onecikanpostresim.jpg";
 
 export default function OnecikanPost() {
     return (
