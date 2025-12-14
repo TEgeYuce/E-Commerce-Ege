@@ -7,6 +7,7 @@ import BlogPage from "../pages/BlogPage";
 import TeamPage from "../pages/TeamPage";
 import SignUp from "../pages/SignUpPage";
 import LogIn from "../pages/LoginPage";
+import ShoppingCart from "../pages/ShoppingCart";
 import { Switch, Route } from "react-router-dom";
 
 export default function PageContent() {
@@ -32,7 +33,7 @@ export default function PageContent() {
                     <ProductDetail/>
                 </Route>
                 <Route path="/team">
-                    <TeamPage/>
+                    <TeamPage />
                 </Route>
                 <Route path="/product:id">
                     <ProductDetail/>
@@ -42,6 +43,9 @@ export default function PageContent() {
                 </Route>
                 <Route path="/login">
                     <LogIn/>
+                </Route>
+                <Route path="/cart">
+                    <ShoppingCart/>
                 </Route>
             </Switch>
         </div>
