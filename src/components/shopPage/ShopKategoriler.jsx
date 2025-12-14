@@ -1,30 +1,28 @@
-import kart1 from "/kart1.png";
-import kart2 from "/kart2.png";
-import kart3 from "/kart3.png";
-import kart4 from "/kart4.png";
-import kart5 from "/kart5.png";
+import {ChevronRight} from "lucide-react";
+import { Link } from "react-router-dom"
+import {useSelector} from "react-redux";
+import ShopKategori from "./ShopKategori";
 
-const categories = [
-  { name: "CLOTHS", imageUrl: kart1, link: "/shop/category/cloths" },
-  { name: "CLOTHS", imageUrl: kart2, link: "/shop/category/cloths" },
-  { name: "CLOTHS", imageUrl: kart3, link: "/shop/category/cloths" },
-  { name: "CLOTHS", imageUrl: kart4, link: "/shop/category/cloths" },
-  { name: "CLOTHS", imageUrl: kart5, link: "/shop/category/cloths" },
-];
-
-const ShopKategoriler = () => {
-  return (
-    <div className="container mx-auto grid grid-cols-1 sm:grid-cols-3 lg:grid-cols-5 gap-10 justify-items-center mb-10">
-      {categories.map((category) => (
-        
-          <img
-            src={category.imageUrl}
-            alt={category.name}
-            className="w-[205px] h-[205px] object-cover cursor-pointer transition-transform duration-300 group-hover:scale-110"
-          />
-      ))}
-    </div>
-  );
-};
-
-export default ShopKategoriler;
+export default function ShopKategoriler() {
+    
+    const categories = useSelector((state) => state.product.categories);
+    const topCategories = [...categories].sort((a, b) => b.rating - a.rating).slice(0, 5);
+    
+    return (
+        <section className="bg-[#FAFAFA] py-6">
+            <div className="title-links flex flex-col items-center gap-7 mb-5 md:mb-2 md:flex-row md:justify-between md:py-6 md:px-[13rem]">
+                <h3 className="text-2xl leading-8 font-bold text-[#252B42]">Shop</h3>
+                <div className="links flex gap-[0.938rem] py-2.5 text-sm font-bold leading-6">
+                    <Link to="/" className="text-[#252B42]">Home</Link>
+                    <ChevronRight color="#BDBDBD"/>
+                    <Link to="/shop" className="text-[#737373]">Shop</Link>
+                </div>
+            </div>
+            <div className="categories flex flex-col md:flex-row gap-3.5 md:gap-[1.5rem] md:pb-12 md:px-44 md:justify-center">
+                {topCategories.map((category) => (
+                    <ShopKategori key={category.id} category={category}/>
+                ))}
+            </div>
+        </section>
+    );
+}
