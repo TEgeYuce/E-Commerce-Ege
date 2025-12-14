@@ -5,6 +5,8 @@ import ContactPage from "../pages/ContactPage";
 import ProductDetail from "../pages/ProductDetail";
 import BlogPage from "../pages/BlogPage";
 import TeamPage from "../pages/TeamPage";
+import SignUp from "../pages/SignUpPage";
+import LogIn from "../pages/LoginPage";
 import { Switch, Route } from "react-router-dom";
 
 export default function PageContent() {
@@ -34,6 +36,12 @@ export default function PageContent() {
                 </Route>
                 <Route path="/product:id">
                     <ProductDetail/>
+                </Route>
+                <Route path="/signup">
+                    <SignUp/>
+                </Route>
+                <Route path="/login">
+                    <LogIn/>
                 </Route>
             </Switch>
         </div>
