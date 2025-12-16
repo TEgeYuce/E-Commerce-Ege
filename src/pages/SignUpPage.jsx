@@ -86,14 +86,14 @@ export default function SignUpPage() {
                 <form onSubmit={handleSubmit(onSubmit)} className="flex flex-col gap-5">
                     <div className="form-name flex flex-col">
                         <label htmlFor="name" className="text-lg leading-6">First Name</label>
-                        <input {...register("name", {required: "Please enter a name", minLength: 3})} id="name" type="text" placeholder="John" className=" bg-gray-50 border rounded-[5px] w-[20rem] h-[2.5rem] md:w-[25rem]"/>
+                        <input {...register("name", {required: "Please enter a name", minLength: 3})} id="name" type="text" placeholder="Ege" className=" bg-gray-50 border pl-4 rounded-[5px] w-[20rem] h-[2.5rem] md:w-[25rem]"/>
                     </div>
                     <div className="form-email flex flex-col">
                         <label htmlFor="email" className="text-lg leading-6">Email</label>
                         <input {...register("email", {required: "Please enter an email", pattern: {
                             value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
                             message: "Invalid email address!"
-                        }})} id="email" type="email" placeholder="text@example.com" className=" bg-gray-50 border rounded-[5px] w-[20rem] h-[2.5rem] md:w-[25rem]"/>
+                        }})} id="email" type="email" placeholder="ege@example.com" className=" bg-gray-50 border pl-4 rounded-[5px] w-[20rem] h-[2.5rem] md:w-[25rem]"/>
                         {errors.email && touchedFields.email && (
                             <p className="w-2xs text-red-500 text-sm py-3">{errors.email.message}</p>
                         )}
@@ -103,7 +103,7 @@ export default function SignUpPage() {
                         <input {...register("password", {required: "Please enter a password", pattern: {
                             value: /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[\W_]).{8,}$/,
                             message: "At least 8 characters including at least one upper/lower case and special characters are required."
-                        }})} id="password" type="password" placeholder="Password" className=" bg-gray-50 border rounded-[5px] w-[20rem] h-[2.5rem] md:w-[25rem]"/>
+                        }})} id="password" type="password" placeholder="Password" className=" bg-gray-50 border pl-4 rounded-[5px] w-[20rem] h-[2.5rem] md:w-[25rem]"/>
                         {errors.password && touchedFields.password && (
                             <p className="w-2xs md:w-sm text-red-500 text-sm py-3">{errors.password.message}</p>
                         )}
@@ -113,11 +113,11 @@ export default function SignUpPage() {
                         <input {...register("validatePass", {
                             required: "Please enter your password again",
                             validate: value => value == watch("password") || "Password does not match!"
-                        })} id="passValid" type="password" placeholder="Password again" className=" bg-gray-50 border rounded-[5px] w-[20rem] h-[2.5rem] md:w-[25rem]"/>
+                        })} id="passValid" type="password" placeholder="Password Again" className=" bg-gray-50 border pl-4 rounded-[5px] w-[20rem] h-[2.5rem] md:w-[25rem]"/>
                     </div>
                     <div className="form-roles flex flex-col">
                         <label htmlFor="roles" className="text-lg leading-6">Role</label>
-                        <select {...register("role_id", {required: "Please select a role"})} id="roles" value={selectedRole} className=" bg-gray-50 border rounded-[5px] w-[20rem] h-[2.5rem] md:w-[25rem]">
+                        <select {...register("role_id", {required: "Please select a role"})} id="roles" value={selectedRole} className=" bg-gray-50 border pl-4 rounded-[5px] w-[20rem] h-[2.5rem] md:w-[25rem]">
                             {roles.map(role => (
                                 <option key={role.id} value={role.id}>{role.name}</option>
                             ))}
@@ -127,7 +127,7 @@ export default function SignUpPage() {
                         <div className="form-store-info flex flex-col gap-5">
                             <div className="store-name flex flex-col">
                                 <label htmlFor="storeName" className="text-lg leading-6">Store Name</label>
-                                <input {...register("store_name", {required: "Please enter a store name", minLength: 3})} id="storeName" type="text" placeholder="ABC Store" className=" bg-gray-50 border rounded-[5px] w-[20rem] h-[2.5rem] md:w-[25rem]"/>
+                                <input {...register("store_name", {required: "Please enter a store name", minLength: 3})} id="storeName" type="text" placeholder="EGE Store" className=" bg-gray-50 border pl-4 rounded-[5px] w-[20rem] h-[2.5rem] md:w-[25rem]"/>
                             </div>
                             <div className="store-phone flex flex-col">
                                 <label htmlFor="storePhone" className="text-lg leading-6">Store Phone</label>
@@ -136,7 +136,7 @@ export default function SignUpPage() {
                                         value: /^(\+90|0)?5\d{9}$/,
                                         message: "Enter a valid Turkey phone number",
                                     }
-                                })} id="storePhone" type="text" placeholder="+901234567890" className=" bg-gray-50 border rounded-[5px] w-[20rem] h-[2.5rem] md:w-[25rem]"/>
+                                })} id="storePhone" type="text" placeholder="+901234567890" className=" bg-gray-50 border pl-4 rounded-[5px] w-[20rem] h-[2.5rem] md:w-[25rem]"/>
                                 {errors.store_phone && touchedFields.store_phone && (
                             <p className="w-2xs text-red-500 text-sm py-3">{errors.store_phone.message}</p>
                         )}
@@ -148,7 +148,7 @@ export default function SignUpPage() {
                                         value: /^T\d{4}V\d{6}$/,
                                         message: "Valid tax number format: TXXXXVXXXXXX",
                                     }
-                                })} id="storeTax" type="text" placeholder="TXXXXVXXXXXX" className=" bg-gray-50 border rounded-[5px] w-[20rem] h-[2.5rem] md:w-[25rem]"/>
+                                })} id="storeTax" type="text" placeholder="TXXXXVXXXXXX" className=" bg-gray-50 border pl-4 rounded-[5px] w-[20rem] h-[2.5rem] md:w-[25rem]"/>
                                 {errors.store_tax_no && touchedFields.store_tax_no && (
                             <p className="w-2xs text-red-500 text-sm py-3">{errors.store_tax_no.message}</p>
                         )}
@@ -160,7 +160,7 @@ export default function SignUpPage() {
                                         value: /^TR\d{24}$/,
                                         message: "Enter a valid IBAN",
                                     }
-                                })} id="storeBank" type="text" placeholder="IBAN" className=" bg-gray-50 border rounded-[5px] w-[20rem] h-[2.5rem] md:w-[25rem]"/>
+                                })} id="storeBank" type="text" placeholder="IBAN" className=" bg-gray-50 border pl-4 rounded-[5px] w-[20rem] h-[2.5rem] md:w-[25rem]"/>
                                 {errors.store_bank_account && touchedFields.store_bank_account && (
                             <p className="w-2xs text-red-500 text-sm py-3">{errors.store_bank_account.message}</p>
                         )}

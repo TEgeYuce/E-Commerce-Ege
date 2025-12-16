@@ -34,11 +34,11 @@ export default function LoginPage() {
                         <input {...register("email", {required: "Please enter your email!", pattern: {
                             value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
                             message: "Invalid email address!"
-                        }})} id="email" type="email" placeholder="test@example.com" className=" bg-gray-50 border rounded-[5px] w-[20rem] h-[2.5rem] md:w-[25rem]"/>
+                        }})} id="email" type="email" placeholder="ege@example.com" className=" bg-gray-50 border pl-4 rounded-[5px] w-[20rem] h-[2.5rem] md:w-[25rem]"/>
                     </div>
                     <div className="login-password flex flex-col">
                         <label htmlFor="password" className="text-lg leading-6">Password</label>
-                        <input {...register("password", {required: "Please enter your password!"})} id="password" type="password" placeholder="Password" className=" bg-gray-50 border rounded-[5px] w-[20rem] h-[2.5rem] md:w-[25rem]"/>
+                        <input {...register("password", {required: "Please enter your password!"})} id="password" type="password" placeholder="Password" className=" bg-gray-50 border pl-4 rounded-[5px] w-[20rem] h-[2.5rem] md:w-[25rem]"/>
                     </div>
                     <div className="login-rememberme flex gap-6">
                         <label htmlFor="rememberme" className="text-lg leading-6">Remember Me</label>
