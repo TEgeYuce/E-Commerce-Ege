@@ -8,6 +8,7 @@ import TeamPage from "../pages/TeamPage";
 import SignUp from "../pages/SignUpPage";
 import LogIn from "../pages/LoginPage";
 import ShoppingCart from "../pages/ShoppingCart";
+import CreateOrder from "../pages/CreateOrder";
 import { Switch, Route } from "react-router-dom";
 
 export default function PageContent() {
@@ -46,6 +47,9 @@ export default function PageContent() {
                 </Route>
                 <Route path="/cart">
                     <ShoppingCart />
+                </Route>
+                <Route path="/order">
+                    <CreateOrder />
                 </Route>
             </Switch>
         </div>
