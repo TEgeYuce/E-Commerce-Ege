@@ -15,37 +15,37 @@ export default function PageContent() {
         <div className="page-content">
             <Switch>
                 <Route exact path="/">
-                    <HomePage/>
+                    <HomePage />
                 </Route>
                 <Route path="/shop">
-                    <ShopPage/>
+                    <ShopPage />
+                </Route>
+                <Route path="/shop/category/:categoryId">
+                    <ShopPage />
                 </Route>
                 <Route path="/about">
-                    <AboutPage/>
+                    <AboutPage />
                 </Route>
                 <Route path="/contact">
-                    <ContactPage/>
+                    <ContactPage />
                 </Route>
                 <Route path="/blog">
-                    <BlogPage/>
+                    <BlogPage />
                 </Route>
-                <Route path="/product">
-                    <ProductDetail/>
+                <Route path="/product/:id">
+                    <ProductDetail />
                 </Route>
                 <Route path="/team">
                     <TeamPage />
                 </Route>
-                <Route path="/product:id">
-                    <ProductDetail/>
-                </Route>
                 <Route path="/signup">
-                    <SignUp/>
+                    <SignUp />
                 </Route>
                 <Route path="/login">
-                    <LogIn/>
+                    <LogIn />
                 </Route>
                 <Route path="/cart">
-                    <ShoppingCart/>
+                    <ShoppingCart />
                 </Route>
             </Switch>
         </div>

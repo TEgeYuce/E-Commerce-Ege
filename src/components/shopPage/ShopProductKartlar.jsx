@@ -4,7 +4,6 @@ import { Link } from "react-router-dom";
 import {SlidersHorizontal, Grip} from "lucide-react";
 import {setPage} from "../../store/actions/urunAction"
 import ShopProductKart from "./ShopProductKart";
-import {createUrunUrl} from "../../utils/createUrunUrl";
 
 
 export default function ShopProductKartlar({categoryId, filters, setFilters, handleFilter}) {
@@ -68,8 +67,8 @@ export default function ShopProductKartlar({categoryId, filters, setFilters, han
                     </div>
                 ) : (<div className="shop-product-cards grid grid-cols-1 md:grid-cols-4 gap-[1.875rem] md:flex-row md:gap-[1.875rem]">
                     {productList.map((product) => (
-                        <Link to={createUrunUrl(product, categories)}>
-                            <ShopProductKart key={product.id} product={product}/>
+                        <Link key={product.id} to={`/product/${product.id}`}>
+                            <ShopProductKart product={product}/>
                         </Link>
                     ))}
                 </div>)}

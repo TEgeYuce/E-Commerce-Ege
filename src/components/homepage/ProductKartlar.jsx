@@ -1,6 +1,9 @@
+import {products} from "../../data/products";
 import ProductKart from "./ProductKart";
 
 export default function ProductKartlar() {
+    const featuredProducts = products.slice(0, 10);
+
     return (
         <section className="product-cards flex flex-col items-center mt-20">
             <div className="titles flex flex-col items-center gap-2.5">
@@ -11,18 +14,14 @@ export default function ProductKartlar() {
             </div>
             <div className="cards-container flex flex-col items-center mt-12">
                 <div className="cards flex flex-col gap-[1.875rem] items-center md:flex-row">
-                    <ProductKart />
-                    <ProductKart />
-                    <ProductKart />
-                    <ProductKart />
-                    <ProductKart />
+                    {featuredProducts.slice(0, 5).map((product) => (
+                        <ProductKart key={product.id} product={product} />
+                    ))}
                 </div>
                 <div className="cards hidden md:flex md:flex-row gap-[1.875rem]">
-                    <ProductKart />
-                    <ProductKart />
-                    <ProductKart />
-                    <ProductKart />
-                    <ProductKart />
+                    {featuredProducts.slice(5, 10).map((product) => (
+                        <ProductKart key={product.id} product={product} />
+                    ))}
                 </div>
             </div>
             <button className="text-[#23A6F0] text-sm font-bold leading-[1.375rem] border border-[#23A6F0] rounded-[0.313rem] w-[16rem] h-[3.25rem] hover:cursor-pointer block">LOAD MORE PRODUCTS</button>
