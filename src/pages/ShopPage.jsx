@@ -1,5 +1,5 @@
 import MarkaLogolar from "../components/sharedcomp/MarkaLogolar";
-import ShopKategoriler from "../components/shopPage/ShopProductKart";
+import ShopKategoriler from "../components/shopPage/ShopKategoriler";
 import ShopProductKartlar from "../components/shopPage/ShopProductKartlar";
 import {clearProductList, setPage} from "../store/actions/urunAction";
 import {getFilteredProducts, getProducts} from "../store/thunks/urunThunk";
