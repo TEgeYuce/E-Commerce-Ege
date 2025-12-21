@@ -70,8 +70,8 @@ export default function AdresForm({ address }) {
               id="title"
               name="title"
               type="text"
-              placeholder="Home"
-              className=" bg-gray-50 border rounded-[5px] w-[20rem] h-[2.5rem] md:w-[25rem]"
+              placeholder="Order"
+              className=" bg-gray-50 border pl-4 rounded-[5px] w-[20rem] h-[2.5rem] md:w-[25rem]"
             />
             {errors.title && (
               <p className="w-2xs text-red-500 text-sm py-3">
@@ -99,8 +99,8 @@ export default function AdresForm({ address }) {
                 id="name"
                 name="name"
                 type="text"
-                placeholder="John"
-                className=" bg-gray-50 border rounded-[5px] w-[9.5rem] h-[2.5rem] md:w-[25rem]"
+                placeholder="Ege"
+                className=" bg-gray-50 border pl-4 rounded-[5px] w-[9.5rem] h-[2.5rem] md:w-[25rem]"
               />
               {errors.name && (
                 <p className="w-2xs text-red-500 text-sm py-3">
@@ -127,8 +127,8 @@ export default function AdresForm({ address }) {
                 id="surname"
                 name="surname"
                 type="text"
-                placeholder="Doe"
-                className=" bg-gray-50 border rounded-[5px] w-[9.5rem] h-[2.5rem] md:w-[25rem]"
+                placeholder="Yücesan"
+                className=" bg-gray-50 border pl-4 rounded-[5px] w-[9.5rem] h-[2.5rem] md:w-[25rem]"
               />
               {errors.surname && (
                 <p className="w-2xs text-red-500 text-sm py-3">
@@ -153,7 +153,7 @@ export default function AdresForm({ address }) {
               name="phone"
               type="text"
               placeholder="01234567891"
-              className=" bg-gray-50 border rounded-[5px] w-[20rem] h-[2.5rem] md:w-[25rem]"
+              className=" bg-gray-50 border pl-4 rounded-[5px] w-[20rem] h-[2.5rem] md:w-[25rem]"
             />
             {errors.phone && (
               <p className="w-2xs text-red-500 text-sm py-3">
@@ -169,7 +169,7 @@ export default function AdresForm({ address }) {
               {...register("city", { required: "Please select a city" })}
               id="city"
               name="city"
-              className=" bg-gray-50 border rounded-[5px] w-[20rem] h-[2.5rem] md:w-[25rem]"
+              className=" bg-gray-50 border pl-4 rounded-[5px] w-[20rem] h-[2.5rem] md:w-[25rem]"
             >
               <option value="İstanbul">İstanbul</option>
               <option value="Ankara">Ankara</option>
@@ -269,8 +269,8 @@ export default function AdresForm({ address }) {
               id="district"
               name="district"
               type="text"
-              placeholder="Kadıköy"
-              className=" bg-gray-50 border rounded-[5px] w-[20rem] h-[2.5rem] md:w-[25rem]"
+              placeholder="İzmit"
+              className=" bg-gray-50 border pl-4 rounded-[5px] w-[20rem] h-[2.5rem] md:w-[25rem]"
             />
             {errors.district && (
               <p className="w-2xs text-red-500 text-sm py-3">
@@ -293,8 +293,8 @@ export default function AdresForm({ address }) {
               id="neighborhood"
               name="neighborhood"
               type="text"
-              placeholder="Haydarpaşa"
-              className=" bg-gray-50 border rounded-[5px] w-[20rem] h-[2.5rem] md:w-[25rem]"
+              placeholder="Workintech"
+              className=" bg-gray-50 border pl-4 rounded-[5px] w-[20rem] h-[2.5rem] md:w-[25rem]"
             />
             {errors.neighborhood && (
               <p className="w-2xs text-red-500 text-sm py-3">
@@ -319,7 +319,7 @@ export default function AdresForm({ address }) {
               type="text"
               rows="2"
               placeholder="Address"
-              className=" bg-gray-50 border rounded-[5px] w-[20rem] md:w-[25rem] resize-none"
+              className=" bg-gray-50 border pl-4 rounded-[5px] w-[20rem] md:w-[25rem] resize-none"
             />
             {errors.address && (
               <p className="w-2xs text-red-500 text-sm py-3">
