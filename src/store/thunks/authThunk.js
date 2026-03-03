@@ -1,24 +1,30 @@
+import { AuthService } from "../../utils/authService";
 import axiosOrnek from "../../utils/axiosOrnek";
 import { setUser } from "../actions/clientAction";
 
 export const checkToken = () => async (dispatch) => {
-    const token = localStorage.getItem("token");
+    const token = AuthService.getToken();
 
-    if(!token)
+    if(!token) {
+        console.log("No token found, user not authenticated");
         return;
+    }
 
     try {
-        axiosOrnek.defaults.headers.common["Authorization"] = token;
         const response = await axiosOrnek.get("/verify");
         const {name, email, role_id, token: responseToken} = response.data;
 
         dispatch(setUser({name, email, role_id}, [], []));
-        localStorage.setItem("token", responseToken);
-        axiosOrnek.defaults.headers.common["Authorization"] = responseToken;
+
+        if (responseToken && responseToken !== token) {
+            AuthService.setAuthToken(responseToken);
+        }
+        
+        console.log("Token verification successful for user:", name);
     } catch (error) {
         console.error("Authorization failed: ", error);
-        localStorage.removeItem("token");
-        delete axiosOrnek.defaults.headers.common["Authorization"];
+        AuthService.clearAuth();
+        dispatch(setUser(null, [], []));
     }
 
-}
+};

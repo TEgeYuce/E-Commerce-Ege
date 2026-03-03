@@ -16,9 +16,9 @@ export default function LoginPage() {
         const result = await dispatch(loginUser(data));
 
         if(result.success) {
-            history.goBack();
-        } else {
-            toast.error("Login failed: Wrong email / password!")
+            setTimeout(() => {
+                history.push("/");
+            }, 1000);
         }
     }
     

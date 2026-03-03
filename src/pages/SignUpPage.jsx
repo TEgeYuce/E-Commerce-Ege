@@ -4,6 +4,7 @@ import {useForm} from "react-hook-form";
 import {useSelector, useDispatch} from "react-redux";
 import { useHistory } from "react-router-dom";
 import {useEffect} from "react";
+import { signupUser } from "../store/thunks/signupThunks";
 import {getRoles} from "../store/thunks/clientThunk";
 import {toast} from "react-toastify";
 import axiosOrnek from "../utils/axiosOrnek";
@@ -38,7 +39,7 @@ export default function SignUpPage() {
         const roleId = Number(data.role_id);
         let payload;
         
-        if(roleId == 2) {
+        if(roleId == 3) {
             payload = {
                 name: data.name,
                 email: data.email,
@@ -60,20 +61,16 @@ export default function SignUpPage() {
             };
         }
         
-        try {
-            const response = await axiosOrnek.post("/signup", payload);
-            toast.success(response.data.message);
+        const result = await dispatch(signupUser(payload));
+        
+        if (result.success) {
             setTimeout(() => {
-                history.goBack();
-            }, 3000);
-        } catch (error) {
-            console.error("Error: ", error);
-            const status = error.response?.status;
-            if(status === 409) {
-                toast.error("User with same email already registered.");
-            } else {
-                toast.error("An error has occured!");
-            }
+                if (result.autoLoggedIn) {
+                    history.push("/");
+                } else {
+                    history.push("/login");
+                }
+            }, 2000);
         }
     };
     
@@ -123,7 +120,7 @@ export default function SignUpPage() {
                             ))}
                         </select>
                     </div>
-                    {selectedRole == 2 && (
+                    {selectedRole == 3 && (
                         <div className="form-store-info flex flex-col gap-5">
                             <div className="store-name flex flex-col">
                                 <label htmlFor="storeName" className="text-lg leading-6">Store Name</label>

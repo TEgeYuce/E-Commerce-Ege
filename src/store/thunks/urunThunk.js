@@ -2,16 +2,34 @@ import {setCategories, setBestSellers, setFetchState, setTotal, setProductDetail
 import axiosOrnek from "../../utils/axiosOrnek";
 
 export const getCategories = () => async (dispatch, getState) => {
-    const {categories} = getState().product;
+    const {categories, fetchState} = getState().product;
 
-    if(categories.length > 0)
+    if(categories.length > 0 || fetchState === "FETCHING")
         return categories;
 
     try {
+        console.log('Fetching categories from backend...');
+        dispatch(setFetchState("FETCHING"));
+
         const response = await axiosOrnek.get("/categories");
-        dispatch(setCategories(response.data));
+        const categoriesData = response.data;
+        
+        console.log('Categories fetched successfully:', categoriesData);
+        dispatch(setCategories(categoriesData));
+        dispatch(setFetchState("FETCHED"));
+        
+        return categoriesData;
     } catch (error) {
         console.error("Category fetch failed: ", error);
+        dispatch(setFetchState("FAILED"));
+        dispatch(setCategories([]));
+        
+        if (error.response) {
+            console.error('Response status:', error.response.status);
+            console.error('Response data:', error.response.data);
+        }
+        
+        return [];
     }
 };
 
@@ -88,11 +106,15 @@ export const getBestSellers = () => async (dispatch) => {
     try {
         dispatch(setFetchState("FETCHING"));
         const response = await axiosOrnek.get("/products/bestsellers");
-        console.log(response.data);
-        dispatch(setBestSellers(response.data));
+        console.log("Bestsellers response:", response.data);
+        
+        const products = response.data.products || [];
+        dispatch(setBestSellers(products));
         dispatch(setFetchState("FETCHED"));
     } catch (error) {
         console.error("Bestseller fetch failed: ", error);
+        console.error("Error response:", error.response?.data);
         dispatch(setFetchState("FAILED"));
+        dispatch(setBestSellers([]));
     }
 }

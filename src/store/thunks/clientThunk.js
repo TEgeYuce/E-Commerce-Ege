@@ -27,33 +27,72 @@ export const getAddress = () => async (dispatch, getState) => {
         return addressList;
 
     try {
-        axiosOrnek.defaults.headers.common["Authorization"] = token;
+        if (token) {
+            axiosOrnek.defaults.headers.common["Authorization"] = `Bearer ${token}`;
+        }
+        
+        console.log("Fetching addresses with token:", token ? "Present" : "Missing");
         const response = await axiosOrnek.get("/user/address");
+        console.log("Address fetch response:", response.data);
         const data = response.data;
         dispatch(setUser(user, data, creditCards));
+        return data;
     } catch (error) {
         console.error("Address fetch error: ", error);
+        console.error("Error response:", error.response?.data);
+        console.error("Request headers:", error.config?.headers);
+        
+        if (error.response?.status === 500) {
+            toast.error("Server error occurred while fetching addresses. Please try logging in again.");
+        } else if (error.response?.status === 401 || error.response?.status === 403) {
+            toast.error("Authentication failed. Please login again.");
+            localStorage.removeItem("token");
+        } else if (error.response?.data?.message) {
+            toast.error(error.response.data.message);
+        } else {
+            toast.error("Failed to fetch addresses.");
+        }
+        return [];
     }
 };
 
 export const addAddress = (formData) => async (dispatch, getState) => {
     const {user, addressList, creditCards} = getState().client;
+    const token = localStorage.getItem("token");
 
     try {
+        if (token) {
+            axiosOrnek.defaults.headers.common["Authorization"] = `Bearer ${token}`;
+        }
         const response = await axiosOrnek.post("/user/address", formData);
-        console.log(response.data);
+        console.log("Add address response:", response.data);
         //const newAddress = response.data[0];
         const newAddress = response.data;
         dispatch(setUser(user, [...addressList, newAddress], creditCards));
+        toast.success("Address added successfully!");
     } catch (error) {
         console.error("Add new address error: ", error);
+        console.error("Request payload:", formData);
+        console.error("Error response:", error.response?.data);
+        
+        if (error.response?.status === 500) {
+            toast.error("Server error occurred while adding address. Please try again.");
+        } else if (error.response?.data?.message) {
+            toast.error(error.response.data.message);
+        } else {
+            toast.error("Failed to add address. Please check your input and try again.");
+        }
     }
 }
 
 export const editAddress = (formData) => async (dispatch, getState) => {
     const {user, addressList, creditCards} = getState().client;
+    const token = localStorage.getItem("token");
 
     try {
+        if (token) {
+            axiosOrnek.defaults.headers.common["Authorization"] = `Bearer ${token}`;
+        }
         const response = await axiosOrnek.put("/user/address", formData);
         //const updatedAddress = response.data[0];
         const updatedAddress = response.data;
@@ -69,7 +108,7 @@ export const deleteAddress = (addressId) => async (dispatch, getState) => {
     const token = localStorage.getItem("token");
 
     try {
-        axiosOrnek.defaults.headers.common["Authorization"] = token;
+        axiosOrnek.defaults.headers.common["Authorization"] = `Bearer ${token}`;
         const response = await axiosOrnek.delete(`/user/address/${addressId}`);
         const message = response.data.message;
         console.log(message);
@@ -91,7 +130,7 @@ export const getCards = () => async (dispatch, getState) => {
         return creditCards;
 
     try {
-        axiosOrnek.defaults.headers.common["Authorization"] = token;
+        axiosOrnek.defaults.headers.common["Authorization"] = `Bearer ${token}`;
         const response = await axiosOrnek.get("/user/card");
         const data = response.data;
         dispatch(setUser(user, addressList, data));
@@ -102,8 +141,12 @@ export const getCards = () => async (dispatch, getState) => {
 
 export const addCard = (formData) => async (dispatch, getState) => {
     const {user, addressList, creditCards} = getState().client;
+    const token = localStorage.getItem("token");
 
     try {
+        if (token) {
+            axiosOrnek.defaults.headers.common["Authorization"] = `Bearer ${token}`;
+        }
         const response = await axiosOrnek.post("/user/card", formData);
         //const newCard = response.data[0];
         const newCard = response.data;
@@ -119,8 +162,12 @@ export const addCard = (formData) => async (dispatch, getState) => {
 
 export const editCard = (formData) => async (dispatch, getState) => {
     const {user, addressList, creditCards} = getState().client;
+    const token = localStorage.getItem("token");
 
     try {
+        if (token) {
+            axiosOrnek.defaults.headers.common["Authorization"] = `Bearer ${token}`;
+        }
         const response = await axiosOrnek.put("/user/card", formData);
         const updatedCard = response.data[0];
         const newList = creditCards.map(card => card.id === updatedCard.id ? updatedCard : card);
@@ -135,7 +182,7 @@ export const deleteCard = (cardId) => async (dispatch, getState) => {
     const token = localStorage.getItem("token");
 
     try {
-        axiosOrnek.defaults.headers.common["Authorization"] = token;
+        axiosOrnek.defaults.headers.common["Authorization"] = `Bearer ${token}`;
         const response = await axiosOrnek.delete(`/user/card/${cardId}`);
         const message = response.data.message;
         toast.success(message);
@@ -152,7 +199,7 @@ export const getOrders = () => async (dispatch) => {
     const token = localStorage.getItem("token");
 
     try {
-        axiosOrnek.defaults.headers.common["Authorization"] = token;
+        axiosOrnek.defaults.headers.common["Authorization"] = `Bearer ${token}`;
         const response = await axiosOrnek.get("/order");
         dispatch(setOrders(response.data));
     } catch (error) {

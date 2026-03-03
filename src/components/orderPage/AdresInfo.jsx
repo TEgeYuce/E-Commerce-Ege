@@ -43,7 +43,7 @@ export default function AdresInfo({ setStep }) {
 
   useEffect(() => {
     dispatch(getAddress());
-  });
+  }, [dispatch]);
 
   return (
     <section className="address-info-main">
